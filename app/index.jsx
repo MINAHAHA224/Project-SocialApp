@@ -1,13 +1,57 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
-import { Link } from 'expo-router';
-export default function App() {
+import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Link, useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { images } from '../constants'
+import CustomButton from '../components/customButton';
 
+
+export default function App() {
+    const router = useRouter();
+    const isloading = false;
     return (
         <>
-            <View className="flex-1 items-center justify-center bg-white">
-                <Text className="text-2xl">Open up App.js to start working on your app!</Text>
-                <Link href={"/home"}>Go to home!!</Link>
-            </View>
+            <SafeAreaView className={"flex - 1 bg-primary"}>
+                <ScrollView contentContainerStyle={{ height: "100%" }}>
+                    <View className={" items-center justify-center w-full min-h-[85vh] px-4"}>
+                        <Image
+                            source={images.logo}
+                            resizeMode={"contain"}
+                            className={"w-[130px] h-[84px]"}
+
+                        />
+                        <Image
+                            source={images.cards}
+                            resizeMode={"contain"}
+                            className={"max-w-[380px] w-full h-[300px]"}
+
+                        />
+                        <View className="relative mt-5">
+                            <Text className="text-3xl text-white font-bold text-center">
+                                Discover Endless{"\n"}
+                                Possibilities with{" "}
+                                <Text className="text-secondary-200">Aora</Text>
+                            </Text>
+
+                            <Image
+                                source={images.path}
+                                className="w-[136px] h-[15px] absolute -bottom-2 -right-8"
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <Text className={"text-sm font-pregular text-gray-100 text-white text-center py-5"}>
+                            Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora
+                        </Text>
+                        <CustomButton
+                            title={"Continue with Email"}
+                            containerStyle={"w-full mt-7"}
+                            handlePress={() => router.push("/sign-in")}
+                            isLoading={isloading}
+                        />
+
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
+
 
         </>
 
