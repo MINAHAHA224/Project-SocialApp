@@ -1,4 +1,5 @@
-import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { StatusBar } from "expo-status-bar";
 import { Link, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../constants'
@@ -10,7 +11,7 @@ export default function App() {
     const isloading = false;
     return (
         <>
-            <SafeAreaView className={"flex - 1 bg-primary"}>
+            <SafeAreaView className={"h-full bg-primary"}>
                 <ScrollView contentContainerStyle={{ height: "100%" }}>
                     <View className={" items-center justify-center w-full min-h-[85vh] px-4"}>
                         <Image
@@ -50,6 +51,8 @@ export default function App() {
 
                     </View>
                 </ScrollView>
+
+                <StatusBar backgroundColor={"#161622"} style={"light"} />
             </SafeAreaView>
 
 
